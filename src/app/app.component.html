@@ -3,15 +3,18 @@
     <h2>Search Places</h2>
   </div>
 
+  <!-- Search bar -->
   <div class="search-bar">
-    <input [disabled]="!places.length" type="text" placeholder="Search places..."
-      (keyup.enter)="onPlaceEnter($event)" />
+    <input [disabled]="!places.length" type="text" class="form-control" placeholder="Search places..."
+      (keyup.enter)="filterPlace($event)" />
   </div>
 
+  <!-- Loader -->
   <div class="loader" *ngIf="isLoading">
-    <img src="/assets/loader.gif" alt="image">
+    <img src="/assets/loader.gif" alt="Loader">
   </div>
 
+  <!-- Places data table -->
   <div class="content-table">
     <p *ngIf="!tempPlaces.length && !isLoading">No data found</p>
     <table *ngIf="tempPlaces.length">
@@ -24,19 +27,38 @@
         <tr *ngFor="let item of tempPlaces; let i = index">
           <td>{{i + 1}}</td>
           <td>{{item.city}}</td>
-          <td>{{item.country}}</td>
+          <td>
+            <div class="country-flag">
+              <div>{{item.country}}</div>
+              <div>
+                <img [src]="getCountryFlag(item.countryCode)" [alt]="item.countryCode">
+              </div>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="pagination">
-    <select (change)="pageSizeChange($event)">
-      <option value="3">3</option>
-      <option value="5">5</option>
-      <option value="10">10
-      <option>
-    </select>
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="tempPlaces.length">
+    <div class="pages">
+      <ul>
+        <ng-container *ngFor="let n of numSequence(totalPages); let i = index;">
+          <li (click)="changePage(i + 1)">
+            <a href="javascript:void(0);">{{i + 1}}</a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="datasize">
+      <form [formGroup]="dataForm" (ngSubmit)="changeDataSize()">
+        <input type="number" class="form-control" formControlName="dataSize" />
+        <div class="error" *ngIf="dataForm.invalid">
+          <p *ngIf="dataForm.get('dataSize')?.errors?.['min'] || dataForm.get('dataSize')?.errors?.['max']">Min 1 & Max
+            10 data are allowed</p>
+        </div>
+      </form>
+    </div>
   </div>
-
 </div>

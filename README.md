@@ -1,10 +1,7 @@
  # Getting Started
  
  ```bash
-  # after cloning the repo
-  cd frontend
-
-  # Install npm packages
+  # after cloning the repo Install npm packages
   npm i
 
   # Run Angular application on browser

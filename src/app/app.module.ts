@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { TokenInterceptorService } from 'src/services/token-interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import { TokenInterceptorService } from 'src/services/token-interceptor';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [

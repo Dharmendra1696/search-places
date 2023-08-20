@@ -1,4 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+
+.form-control {
+    width: 241px;
+    height: 38px;
+    font-size: 16px;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(206, 212, 218);
+    border-radius: 4px;
+    padding: 6px 12px 6px 0;
+}
+
+.form-control:focus {
+    border-color: #7952b3;
+    box-shadow: 0 0 0 3px rgb(121 82 179 / 25%);
+}
+
+.error {
+    color: red;
+}
+
 .main-block {
     width: 90%;
     margin: 0 auto;
@@ -11,27 +31,13 @@
     text-align: center;
 }
 
-.search-bar input {
-    width: 241px;
-    height: 38px;
-    font-size: 16px;
-    background-color: rgb(255, 255, 255);
-    border-color: rgb(206, 212, 218);
-    border-radius: 4px;
-    padding: 6px 12px 6px 0;
-}
-
-.search-bar input:focus {
-    border-color: #7952b3;
-    box-shadow: 0 0 0 3px rgb(121 82 179 / 25%);
-}
-
 .search-bar input[disabled] {
     background-color: rgb(233, 236, 239)
 }
 
 .content-table {
     margin: 15px 0px;
+    overflow: auto;
 }
 
 .content-table p {
@@ -67,17 +73,24 @@ th {
     width: 200px;
 }
 
-.pagination select {
-    width: 241px;
-    height: 38px;
-    font-size: 16px;
-    background-color: rgb(255, 255, 255);
-    border-color: rgb(206, 212, 218);
-    border-radius: 4px;
-    padding: 6px 12px 6px 0;
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.pagination input:focus {
-    border-color: #7952b3;
-    box-shadow: 0 0 0 3px rgb(121 82 179 / 25%);
+.pagination .pages ul {
+    list-style: none;
+    display: flex;
+}
+
+.pagination .pages ul li {
+    margin-right: 5px;
+    background-color: gray;
+}
+
+.pagination .pages ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 15px;
 }
