@@ -1,0 +1,42 @@
+<div class="main-block">
+  <div class="heading">
+    <h2>Search Places</h2>
+  </div>
+
+  <div class="search-bar">
+    <input [disabled]="!places.length" type="text" placeholder="Search places..."
+      (keyup.enter)="onPlaceEnter($event)" />
+  </div>
+
+  <div class="loader" *ngIf="isLoading">
+    <img src="/assets/loader.gif" alt="image">
+  </div>
+
+  <div class="content-table">
+    <p *ngIf="!tempPlaces.length && !isLoading">No data found</p>
+    <table *ngIf="tempPlaces.length">
+      <thead>
+        <th>#</th>
+        <th>Place</th>
+        <th>Country</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of tempPlaces; let i = index">
+          <td>{{i + 1}}</td>
+          <td>{{item.city}}</td>
+          <td>{{item.country}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination">
+    <select (change)="pageSizeChange($event)">
+      <option value="3">3</option>
+      <option value="5">5</option>
+      <option value="10">10
+      <option>
+    </select>
+  </div>
+
+</div>
